@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="UniBCI: Towards a Unified Pretrained Model for Invasive Brain-Computer Interfaces - Anonymous Author(s)">
+  <meta name="description" content="UniBCI is a unified pretrained model for invasive Brain-Computer Interfaces, introducing context-conditioned spatio-temporal tokenization and Interval-Area Attention for neural signal modeling.">
+  <meta name="keywords" content="Brain-Computer Interfaces, BCI, Invasive Neural Signal, Foundation Model, Pretrained Model, Neural Decoding, Spatio-Temporal Modeling">
+  <meta name="author" content="Anonymous Author(s)">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="NeurIPS 2026 Submission">
+  <meta property="og:title" content="UniBCI: Towards a Unified Pretrained Model for Invasive Brain-Computer Interfaces">
+  <meta property="og:description" content="UniBCI is a unified pretrained model for invasive Brain-Computer Interfaces, introducing context-conditioned spatio-temporal tokenization and Interval-Area Attention for neural signal modeling.">
+  <meta property="og:url" content="https://anonymous.4open.science/r/UniBCI-C805">
+  <meta property="og:image" content="static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="UniBCI - Research Preview">
+  <meta property="article:published_time" content="2026-01-01T00:00:00.000Z">
+  <meta property="article:author" content="Anonymous Author(s)">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="Brain-Computer Interfaces">
+  <meta property="article:tag" content="Neural Decoding">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="UniBCI: Towards a Unified Pretrained Model for Invasive Brain-Computer Interfaces">
+  <meta name="twitter:description" content="UniBCI is a unified pretrained model for invasive Brain-Computer Interfaces, introducing context-conditioned spatio-temporal tokenization and Interval-Area Attention for neural signal modeling.">
+  <meta name="twitter:image" content="static/images/social_preview.png">
+  <meta name="twitter:image:alt" content="UniBCI - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="UniBCI: Towards a Unified Pretrained Model for Invasive Brain-Computer Interfaces">
+  <meta name="citation_author" content="Author(s), Anonymous">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="NeurIPS 2026">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <title>UniBCI</title>
+  
+  <!-- Favicon and App Icons -->
+  <link rel="icon" href="data:,">
+  
+  <!-- Critical CSS -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  <!-- 引入安全的 MathJax 库（已移除 polyfill.io） -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "UniBCI: Towards a Unified Pretrained Model for Invasive Brain-Computer Interfaces",
+    "description": "UniBCI is a unified pretrained model for invasive Brain-Computer Interfaces, introducing context-conditioned spatio-temporal tokenization and Interval-Area Attention for neural signal modeling.",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Anonymous Author(s)"
+      }
+    ],
+    "datePublished": "2026-01-01",
+    "publisher": {
+      "@type": "Organization",
+      "name": "NeurIPS 2026"
+    },
+    "keywords": ["Brain-Computer Interfaces", "Neural Signal Processing", "Representation Learning", "Foundation Models"],
+    "abstract": "Modeling invasive neural spike data is fundamental to advancing high-performance brain-computer interfaces (BCIs)..."
+  }
+  </script>
+
+  <!-- 自定义样式补丁：统一背景、悬浮选中与表格高亮（放在 head 的最后） -->
+  <style>
+    /* 1. 统一全局背景与卡片阴影设计 */
+    /* body {
+      background-color: #f8f9fa !important;
+      color: #2c3e50;
+    } */
+
+    section.section {
+      background: transparent !important;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .box, .interactive-card {
+      background-color: #ffffff;
+      border-radius: 12px !important;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+      position: relative;
+    }
+
+    /* 2. Section / 卡片 鼠标悬浮选中效果 */
+    .box:hover, .interactive-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08) !important;
+      border-color: rgba(50, 115, 220, 0.3);
+    }
+
+    /* 3. 表格 (Table) 现代化与悬浮高亮效果 */
+    .table-container {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    }
+
+    .table {
+      background-color: #ffffff !important;
+      border-collapse: separate;
+      border-spacing: 0;
+      width: 100%;
+    }
+
+    .table thead th {
+      background-color: #f1f5f9 !important;
+      color: #334155 !important;
+      font-weight: 700;
+      border-bottom: 2px solid #e2e8f0 !important;
+    }
+
+    .table tbody tr {
+      transition: all 0.2s ease;
+      cursor: default;
+    }
+
+    .table tbody tr:hover {
+      background-color: #eff6ff !important;
+      transform: scale(1.002);
+    }
+
+    .table tbody tr:hover td {
+      color: #1d4ed8;
+    }
+
+    /* 修复标题及下划线居中问题 */
+    .title.is-3 {
+      position: relative;
+      display: block !important;       /* 恢复块级元素以支持居中 */
+      text-align: center !important;   /* 确保文字居中 */
+    }
+
+    /* 如果标题下方的粉色下划线是用 ::after 伪元素画的，确保它也绝对居中 */
+    .title.is-3::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);    /* 水平居中核心定位 */
+      width: 60px;                    /* 下划线宽度 */
+      height: 3px;                    /* 下划线高度 */
+      background: linear-gradient(90deg, #ff758c, #ff7eb3); /* 渐变粉色 */
+      border-radius: 2px;
+    }
+
+    /* 1. 将所有 Section 的最大宽度调大 */
+    .container.is-max-desktop, 
+    .container {
+      max-width: 1200px !important; /* 默认通常是 1152px，改为 1400px 即可大幅增宽 */
+      width: 92% !important;        /* 在大屏上保持适宜两侧留白 */
+    }
+
+
+
+
+    /* 2. 为每个 Section 的底部生成 100% 满屏贯穿横线 */
+    section.section {
+      position: relative !important;
+      padding-bottom: 2.5rem !important; /* 给横线留出上下呼吸空间 */
+    }
+
+    section.section::after {
+      content: "" !important;
+      position: absolute !important;
+      bottom: 0 !important;
+      
+      /* 强制拉伸覆盖 100% 屏幕宽度 */
+      left: 50% !important;
+      right: 50% !important;
+      margin-left: -50vw !important;
+      margin-right: -50vw !important;
+      width: 100vw !important;
+      
+      /* 1px 极细浅灰色纯色横线 */
+      height: 1px !important;
+      background-color: #e2e8f0 !important; /* 经典学术风浅灰 (也可以用 #e5e7eb) */
+    }
+
+    /* 最后一个 Section（如 BibTeX）下方自动隐藏横线 */
+    section.section:last-of-type::after {
+      display: none !important;
+    }
+
+    /* 1. 开启全页平滑滚动 */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* 2. 侧边栏目录 (Sticky Floating TOC) 样式 */
+    .side-toc {
+      position: fixed;
+      top: 180px;                  /* 距离顶部的高度，可根据需要调整 */
+      left: clamp(20px, 3vw, 80px); /* 自动适配大屏与中屏位置 */
+      z-index: 99;
+      border-left: 1px solid #e0e0e0; /* 左侧优雅细线 */
+      padding-left: 16px;
+      background: transparent;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .toc-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #4a4a4a;
+      margin-bottom: 10px;
+    }
+
+    .toc-list {
+      list-style: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .toc-list li {
+      margin-bottom: 8px !important;
+    }
+
+    .toc-list a {
+      color: #5c6bc0;             /* 匹配图中经典的优雅蓝紫色 */
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: block;
+    }
+
+    .toc-list a:hover {
+      color: #1a237e;             /* 悬浮加深 */
+      transform: translateX(4px); /* 悬浮微微右移 */
+      font-weight: 500;
+    }
+
+    /* 3. 在窄屏/手机端自动隐藏侧边栏，避免挡住内容 */
+    @media screen and (max-width: 1280px) {
+      .side-toc {
+        display: none;
+      }
+    }
+  </style>
+
+
+</head>
+<body>
+
+  <!-- Floating Side Navigation (TOC) -->
+  <nav class="side-toc" aria-label="Table of Contents">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+      <li><a href="#abstract">Abstract</a></li>
+      <li><a href="#datasets">Datasets Overview</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#efficiency">Efficiency & Complexity</a></li>
+      <li><a href="#conclusions">Conclusions</a></li>
+      <li><a href="#BibTeX">BibTeX</a></li>
+    </ul>
+  </nav>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            
+            <!-- 主标题 -->
+            <h1 class="title is-1 publication-title" style="font-weight: 800; margin-bottom: 0.5rem;">
+              UniBCI
+            </h1>
+            
+            <!-- 副标题 -->
+            <h2 class="subtitle is-3 publication-subtitle" style="font-weight: 400; color: #4a4a4a; margin-top: 0;">
+              Towards a Unified Pretrained Model for Invasive Brain-Computer Interfaces
+            </h2>
+            
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Anonymous Author(s)</span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Submitted to The 15th International Conference on Learning Representations (ICLR 2027)</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+
+                <!-- Paper PDF Link -->
+                <span class="link-block">
+                  <a href="static/paper.pdf" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+                </span>
+                
+                <!-- Code Link -->
+                <span class="link-block">
+                  <a href="https://anonymous.4open.science/r/UniBCI-C805" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaser / Method Overview -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <!-- 可以在静态文件夹下放置论文 Figure 1 架构图作为展示 -->
+        <img src="static/images/framework.svg" alt="UniBCI Architecture" style="width:100%;">
+        <h2 class="subtitle has-text-centered" style="margin-top: 15px;">
+          Architecture of UniBCI consisting of context-aware tokenization (CST) and stacked interval-area attention (IAA) layers for masked spike reconstruction.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Paper Abstract -->
+  <section class="section hero is-light" id="abstract">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Modeling invasive neural spike data is fundamental to advancing high-performance brain-computer interfaces (BCIs). However, existing approaches face critical challenges, including limited-scale heterogeneous data, cross-domain distribution shift, and the intrinsic spatiotemporal complexity of invasive neural signals. In this work, we propose <strong>UniBCI</strong>, a unified pretrained model for invasive Brain-Computer Interfaces. The model integrates three key components: (1) a context-conditioned spatio-temporal tokenization (CST) scheme that embeds neural signals together with metadata into a shared representation space; (2) a hierarchical Interval-Area Attention (IAA) mechanism that captures patterns of spike dynamics in slots via linear attention and locality dependencies via sliding-window attention; and (3) a scalable self-supervised masked signals reconstruction objective for learning generalizable neural representations from large-scale unlabeled data. We construct a pretraining corpus spanning multiple species, subjects, brain regions, and behavioral experiment paradigms. Comprehensive experiments demonstrate that UniBCI achieves SOTA performance across diverse downstream tasks while improving generalization, parameter efficiency, and lower inference latency.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Datasets Overview Section -->
+  <!-- Datasets Overview Section -->
+  <!-- Datasets Overview Section -->
+  <section class="section is-light" id="datasets">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <h2 class="title is-3 has-text-centered">Datasets Overview</h2>
+          <div class="table-container">
+            <table class="table is-fullwidth" style="border-collapse: collapse; font-size: 0.95rem;">
+              <thead>
+                <tr style="background-color: #f2f2f2; border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0;">
+                  <th style="padding: 12px; font-weight: 700; color: #222; text-align: left;"></th>
+                  <th style="padding: 12px; font-weight: 700; color: #222; text-align: left;">Dataset</th>
+                  <th style="padding: 12px; font-weight: 700; color: #222; text-align: left;">Species</th>
+                  <th style="padding: 12px; font-weight: 700; color: #222; text-align: left;">Brain Regions</th>
+                  <th style="padding: 12px; font-weight: 700; color: #222; text-align: left;">Tasks</th>
+                  <th style="padding: 12px; font-weight: 700; color: #222; text-align: right;"># Indiv.</th>
+                  <th style="padding: 12px; font-weight: 700; color: #222; text-align: right;"># Sess.</th>
+                  <th style="padding: 12px; font-weight: 700; color: #222; text-align: right;">Data Scale</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Pretraining Datasets -->
+                <tr style="border-bottom: 1px solid #eee;">
+                  <td rowspan="5" style="padding: 12px; vertical-align: middle; font-weight: 600; color: #4a4a4a; text-align: left;">Pretraining</td>
+                  <td style="padding: 12px; color: #3273dc; font-weight: 500; text-align: left;">M1-CO1</td>
+                  <td style="padding: 12px; text-align: left;">Macaque</td>
+                  <td style="padding: 12px; text-align: left;">M1</td>
+                  <td style="padding: 12px; text-align: left;">CO</td>
+                  <td style="padding: 12px; text-align: right;">1</td>
+                  <td style="padding: 12px; text-align: right;">348</td>
+                  <td style="padding: 12px; text-align: right;">17.5 hours</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #eee;">
+                  <td style="padding: 12px; color: #3273dc; font-weight: 500; text-align: left;">M1-CO2</td>
+                  <td style="padding: 12px; text-align: left;">Macaque</td>
+                  <td style="padding: 12px; text-align: left;">M1</td>
+                  <td style="padding: 12px; text-align: left;">CO</td>
+                  <td style="padding: 12px; text-align: right;">1</td>
+                  <td style="padding: 12px; text-align: right;">29</td>
+                  <td style="padding: 12px; text-align: right;">17.8 hours</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #eee;">
+                  <td style="padding: 12px; color: #3273dc; font-weight: 500; text-align: left;">Pac-Man</td>
+                  <td style="padding: 12px; text-align: left;">Macaque</td>
+                  <td style="padding: 12px; text-align: left;">PMd, dLPFC, ACC</td>
+                  <td style="padding: 12px; text-align: left;">Pacman</td>
+                  <td style="padding: 12px; text-align: right;">1</td>
+                  <td style="padding: 12px; text-align: right;">121</td>
+                  <td style="padding: 12px; text-align: right;">109.5 hours</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #eee;">
+                  <td style="padding: 12px; color: #3273dc; font-weight: 500; text-align: left;">HPC-HG</td>
+                  <td style="padding: 12px; text-align: left;">Macaque</td>
+                  <td style="padding: 12px; text-align: left;">HPC</td>
+                  <td style="padding: 12px; text-align: left;">Hidden Goal</td>
+                  <td style="padding: 12px; text-align: right;">1</td>
+                  <td style="padding: 12px; text-align: right;">36</td>
+                  <td style="padding: 12px; text-align: right;">44.8 hours</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #ddd;">
+                  <td style="padding: 12px; color: #3273dc; font-weight: 500; text-align: left;">LICK</td>
+                  <td style="padding: 12px; text-align: left;">Mouse</td>
+                  <td style="padding: 12px; text-align: left;">M2, SNR, VLS</td>
+                  <td style="padding: 12px; text-align: left;">Licking</td>
+                  <td style="padding: 12px; text-align: right;">11</td>
+                  <td style="padding: 12px; text-align: right;">104</td>
+                  <td style="padding: 12px; text-align: right;">74.1 hours</td>
+                </tr>
+
+                <!-- Downstream Datasets -->
+                <tr style="border-bottom: 1px solid #eee;">
+                  <td rowspan="6" style="padding: 12px; vertical-align: middle; font-weight: 600; color: #4a4a4a; text-align: left;">Downstream</td>
+                  <td style="padding: 12px; color: #3273dc; font-weight: 500; text-align: left;">M1-CO1 (New Sess.)</td>
+                  <td style="padding: 12px; text-align: left;">Macaque</td>
+                  <td style="padding: 12px; text-align: left;">M1</td>
+                  <td style="padding: 12px; text-align: left;">CO</td>
+                  <td style="padding: 12px; text-align: right;">1</td>
+                  <td style="padding: 12px; text-align: right;">24</td>
+                  <td style="padding: 12px; text-align: right;">1.3 hours</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #eee;">
+                  <td style="padding: 12px; color: #3273dc; font-weight: 500; text-align: left;">LICK (New Indiv.)</td>
+                  <td style="padding: 12px; text-align: left;">Mouse</td>
+                  <td style="padding: 12px; text-align: left;">M2, SNR, VLS</td>
+                  <td style="padding: 12px; text-align: left;">Licking</td>
+                  <td style="padding: 12px; text-align: right;">3</td>
+                  <td style="padding: 12px; text-align: right;">15</td>
+                  <td style="padding: 12px; text-align: right;">11.4 hours</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #eee;">
+                  <td style="padding: 12px; color: #3273dc; font-weight: 500; text-align: left;">PPC-FINGER</td>
+                  <td style="padding: 12px; text-align: left;">Human</td>
+                  <td style="padding: 12px; text-align: left;">PPC</td>
+                  <td style="padding: 12px; text-align: left;">Finger Press</td>
+                  <td style="padding: 12px; text-align: right;">1</td>
+                  <td style="padding: 12px; text-align: right;">10</td>
+                  <td style="padding: 12px; text-align: right;">6.7 hours</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #eee;">
+                  <td style="padding: 12px; color: #3273dc; font-weight: 500; text-align: left;">Perich</td>
+                  <td style="padding: 12px; text-align: left;">Macaque</td>
+                  <td style="padding: 12px; text-align: left;">M1, PMd</td>
+                  <td style="padding: 12px; text-align: left;">CO, RT</td>
+                  <td style="padding: 12px; text-align: right;">1</td>
+                  <td style="padding: 12px; text-align: right;">12</td>
+                  <td style="padding: 12px; text-align: right;">2.5 hours</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #eee;">
+                  <td style="padding: 12px; color: #3273dc; font-weight: 500; text-align: left;">MC-Maze</td>
+                  <td style="padding: 12px; text-align: left;">Macaque</td>
+                  <td style="padding: 12px; text-align: left;">M1, PMd</td>
+                  <td style="padding: 12px; text-align: left;">Maze</td>
+                  <td style="padding: 12px; text-align: right;">1</td>
+                  <td style="padding: 12px; text-align: right;">1</td>
+                  <td style="padding: 12px; text-align: right;">1.9 hours</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #e0e0e0;">
+                  <td style="padding: 12px; color: #3273dc; font-weight: 500; text-align: left;">Area2-Bump</td>
+                  <td style="padding: 12px; text-align: left;">Macaque</td>
+                  <td style="padding: 12px; text-align: left;">S1</td>
+                  <td style="padding: 12px; text-align: left;">Bump</td>
+                  <td style="padding: 12px; text-align: right;">1</td>
+                  <td style="padding: 12px; text-align: right;">1</td>
+                  <td style="padding: 12px; text-align: right;">0.6 hours</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Method Section -->
+<section class="section" id="methodology">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Methodology</h2>
+    <p class="content is-size-6 has-text-justified mb-6">
+      <strong>UniBCI</strong> captures complex spike dynamics across heterogeneous datasets by unifying neural signals and context metadata into a common embedding space, processed via stacked Interval-Area Attention (IAA) layers.
+    </p>
+
+    <!-- 1. Context-conditioned Spatio-temporal Tokenization (CST) -->
+    <div class="box mb-6">
+      <h3 class="title is-4 mb-3">1. Context-conditioned Spatio-temporal Tokenization (CST)</h3>
+      <div class="columns is-vcentered">
+        
+        <!-- 左侧：文本模板与说明 -->
+        <div class="column is-6">
+          <p class="content is-size-6">
+            To align multi-source neural data across species, subjects, and tasks, UniBCI embeds structural metadata into a natural language prompt:
+          </p>
+          
+          <!-- Metadata Prompt Template Box -->
+          <div class="notification is-light is-link code-template-box" style="font-style: italic; border-left: 4px solid #3273dc;">
+            "Invasive spike signals of <span class="has-text-danger-dark font-weight-bold">[Species]</span> species 
+            (<span class="has-text-link-dark font-weight-bold">[Dataset] [Subject]</span>) in the 
+            <span class="has-text-success-dark font-weight-bold">[Region]</span> brain region during the 
+            <span class="has-text-warning-dark font-weight-bold">[Task]</span> task under session 
+            <span class="has-text-danger-dark font-weight-bold">[Session/Date]</span>."
+          </div>
+
+          <ul class="content is-size-6">
+            <li><strong>Signal Embedding:</strong> Spatiotemporal spike arrays are projected via shared linear weights $W_e$.</li>
+            <li><strong>Context Conditioning:</strong> Dense metadata representations $X_{\text{meta}}$ (via NLM) along with temporal ($T_{\text{pos}}$) and spatial ($A_{\text{pos}}$) positional embeddings are broadcast-added to yield unified tokens:
+              $$\text{token} = X_{\text{emb}} \oplus X_{\text{meta}} \oplus T_{\text{pos}} \oplus A_{\text{pos}}$$
+            </li>
+          </ul>
+        </div>
+
+        <!-- 右侧：Figure 2 展示 -->
+        <div class="column is-6">
+          <figure class="image">
+            <img src="static/images/figure2.svg" alt="Figure 1: Context embeddings expand representation space">
+            <figcaption class="has-text-centered is-size-7 mt-2">
+              <strong>Figure 1:</strong> Contextual embeddings ($b$) enrich raw spike representations ($a$), expanding the latent space ($c$) to distinguish tokens from heterogeneous sources.
+            </figcaption>
+          </figure>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 2. Hierarchical Interval-Area Attention (IAA) -->
+    <div class="box">
+      <h3 class="title is-4 mb-3">2. Interval-Area Attention (IAA) Mechanism</h3>
+      <p class="content is-size-6">
+        Standard self-attention suffers from quadratic complexity on long temporal sequences. To address non-stationary pulse dynamics and spatial locality correlations (Figure 2), IAA decouples attention into temporal intervals and spatial areas.
+      </p>
+
+      <!-- Figure 3 (Motivation) Banner -->
+      <div class="columns is-centered mb-4">
+        <div class="column is-10 has-text-centered">
+          <figure class="image">
+            <img src="static/images/figure3.svg" alt="Figure 2: Spikes pulsing pattern and locality correlation" style="max-height: 180px; width: auto; margin: 0 auto;">
+            <figcaption class="is-size-7 mt-1">
+              <strong>Figure 2:</strong> Biological intuition: Neural spikes pulse within local temporal slots ($I_1, I_2$), while adjacent channels in a brain area maintain strong spatial locality correlations.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- ILA & ASWA Two-Column Layout -->
+      <div class="columns">
+        
+        <!-- Left: ILA Block -->
+        <div class="column is-6">
+          <div class="card h-100" style="height: 100%; border: 1px solid #e0e0e0;">
+            <div class="card-image p-3 has-text-centered">
+              <figure class="image">
+                <img src="static/images/ILA.svg" alt="Interval Linear Attention Architecture">
+              </figure>
+            </div>
+            <div class="card-content pt-0">
+              <h4 class="title is-5 mb-2">Interval Linear Attention (ILA)</h4>
+              <p class="is-size-6">
+                Captures short-term temporal dynamics within each non-overlapping time interval $I_i$ ($t$ timesteps). Uses linear attention to accelerate computation without sacrificing sequence modeling capability.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: ASWA Block -->
+        <div class="column is-6">
+          <div class="card h-100" style="height: 100%; border: 1px solid #e0e0e0;">
+            <div class="card-image p-3 has-text-centered">
+              <figure class="image">
+                <img src="static/images/ASWA.svg" alt="Area-wise Sliding Window Attention Architecture">
+              </figure>
+            </div>
+            <div class="card-content pt-0">
+              <h4 class="title is-5 mb-2">Area-wise Sliding Window Attention (ASWA)</h4>
+              <p class="is-size-6">
+                Applies temporal pooling over intervals and computes local spatial attention across adjacent brain areas/channels using a sliding window $w$, effectively capturing cross-interval spatial locality.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Efficiency and Complexity Section -->
+<section class="section" id="efficiency">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Efficiency & Complexity</h2>
+    
+    <div class="box">
+      <!-- 核心指标高亮卡片 (Stat Badges) -->
+      <div class="columns is-multiline has-text-centered mb-4">
+        <div class="column is-3">
+          <div class="notification is-link is-light p-3">
+            <p class="heading">Trainable Params</p>
+            <p class="title is-4 has-text-link">0.28 M</p>
+            <p class="is-size-7">~46x smaller than NDT1/POYO</p>
+          </div>
+        </div>
+        <div class="column is-3">
+          <div class="notification is-info is-light p-3">
+            <p class="heading">Inference Latency</p>
+            <p class="title is-4 has-text-info">7.6 ms</p>
+            <p class="is-size-7">Real-time capable</p>
+          </div>
+        </div>
+        <div class="column is-3">
+          <div class="notification is-success is-light p-3">
+            <p class="heading">Avg $R^2$ Score</p>
+            <p class="title is-4 has-text-success">0.809</p>
+            <p class="is-size-7">Highest performance</p>
+          </div>
+        </div>
+        <div class="column is-3">
+          <div class="notification is-primary is-light p-3">
+            <p class="heading">Balanced Accuracy</p>
+            <p class="title is-4 has-text-primary">0.853</p>
+            <p class="is-size-7">Top classification accuracy</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 图文对比区域 -->
+      <div class="columns is-vcentered">
+        <!-- 左侧：分析文本 -->
+        <div class="column is-5">
+          <p class="content is-size-6 has-text-justified">
+            UniBCI incorporates a pretrained text encoder (22.7M parameters) that is <strong>frozen during training</strong>, introducing zero extra training cost. 
+          </p>
+          <ul class="content is-size-6">
+            <li>
+              <strong>Model Compactness:</strong> With only <strong>0.28M trainable parameters</strong>, UniBCI achieves extreme parameter efficiency compared to baselines like NDT1 (12.20M) and POYO (12.98M).
+            </li>
+            <li>
+              <strong>Inference Efficiency:</strong> Maintains a highly competitive latency of <strong>7.6 ms</strong> per sample, making it exceptionally well-suited for real-time invasive brain-computer interfaces.
+            </li>
+            <li>
+              <strong>Optimal Trade-off:</strong> While NDT1 is slightly faster (4.9 ms), it suffers from degraded accuracy. UniBCI yields the best balance of speed, compactness, and decoding performance.
+            </li>
+          </ul>
+        </div>
+
+        <!-- 右侧：Figure 6 图片与 Caption -->
+        <div class="column is-7">
+          <figure class="image">
+            <img src="static/images/UniBCI_SOTA_Analysis_newV.svg" alt="Figure 3: Comparison of model efficiency in terms of parameter count, inference latency and balanced performance.">
+            <figcaption class="has-text-centered is-size-7 mt-2">
+              <strong>Figure 3:</strong> Comparison of model efficiency in terms of parameter count, inference latency, and decoding performance. The x-axis is in log scale, and circle size represents parameter scale.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Conclusion Section -->
+  <section class="section" id="conclusions">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <h2 class="title is-3 has-text-centered">Conclusions</h2>
+          
+          <p class="content is-size-6 has-text-justified mb-5">
+            In this work, we introduced <strong>UniBCI</strong>: a lightweight, low-latency, and label-free framework for universal neural decoding. Unlike previous paradigms, UniBCI achieves all-around excellence across key dimensions, seamlessly integrating text-conditioned flexibility with robust cross-species generalization.
+          </p>
+
+          <div class="table-container">
+            <table class="table is-fullwidth" style="border-collapse: collapse; font-size: 0.95rem;">
+              <thead>
+                <tr style="background-color: #f2f2f2; border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0;">
+                  <th style="padding: 12px; font-weight: 700; color: #222; text-align: left;">Model</th>
+                  <th style="padding: 12px; font-weight: 700; color: #222; text-align: center;">Lightweight</th>
+                  <th style="padding: 12px; font-weight: 700; color: #222; text-align: center;">Low-latency</th>
+                  <th style="padding: 12px; font-weight: 700; color: #222; text-align: center;">Label-free</th>
+                  <th style="padding: 12px; font-weight: 700; color: #222; text-align: center;">Text-conditioned</th>
+                  <th style="padding: 12px; font-weight: 700; color: #222; text-align: center;">Cross-species</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid #eee;">
+                  <td style="padding: 12px; font-weight: 600; color: #555; text-align: left;">NDT1</td>
+                  <td style="padding: 12px; text-align: center; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px; text-align: center; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
+                  <td style="padding: 12px; text-align: center; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
+                  <td style="padding: 12px; text-align: center; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px; text-align: center; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #eee;">
+                  <td style="padding: 12px; font-weight: 600; color: #555; text-align: left;">NDT2</td>
+                  <td style="padding: 12px; text-align: center; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
+                  <td style="padding: 12px; text-align: center; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px; text-align: center; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
+                  <td style="padding: 12px; text-align: center; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px; text-align: center; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #eee;">
+                  <td style="padding: 12px; font-weight: 600; color: #555; text-align: left;">POYO</td>
+                  <td style="padding: 12px; text-align: center; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px; text-align: center; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px; text-align: center; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px; text-align: center; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px; text-align: center; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #e0e0e0; background-color: #fafafa;">
+                  <td style="padding: 12px; font-weight: 700; color: #3273dc; text-align: left;">UniBCI</td>
+                  <td style="padding: 12px; text-align: center; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
+                  <td style="padding: 12px; text-align: center; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
+                  <td style="padding: 12px; text-align: center; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
+                  <td style="padding: 12px; text-align: center; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
+                  <td style="padding: 12px; text-align: center; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="content is-size-6 has-text-justified mt-5">
+            By combining lightweight design, real-time efficiency, and versatile task conditioning, UniBCI provides a foundational step towards flexible and deployment-ready brain-computer interfaces across diverse real-world scenarios.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BibTex Citation
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@inproceedings{UniBCI2026,
+  title={UniBCI: Towards a Unified Pretrained Model for Invasive Brain-Computer Interfaces},
+  author={Anonymous Author(s)},
+  booktitle={Submitted to The 15th International Conference on Learning Representations (ICLR 2027)},
+  year={2026},
+  url={https://anonymous.4open.science/r/UniBCI-C805}
+}</code></pre>
+    </div>
+  </section> -->
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </body>
+  </html>
