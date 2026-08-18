@@ -128,6 +128,32 @@
       background-color: #f8f9fa !important;
       color: #2c3e50;
     } */
+     /* 表格内模型链接样式 */
+    .model-link {
+      color: #1e293b; /* 保持与正文一致的深色 */
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .model-link:hover {
+      color: #2563eb; /* 鼠标悬浮时变为典雅的学术蓝 */
+      text-decoration: underline; /* 悬浮时显示下划线提示可点击 */
+    }
+
+    /* 数据集链接基础样式：默认无下划线 */
+    .dataset-link {
+      color: #2563eb; /* 典雅蓝 */
+      font-weight: 500;
+      text-decoration: none; /* 默认隐藏下划线 */
+      transition: all 0.2s ease-in-out;
+    }
+
+    /* 鼠标悬浮 (Hover) 到文字上时：显示下划线并加深颜色 */
+    .dataset-link:hover {
+      text-decoration: underline !important; /* 显示下划线 */
+      color: #1d4ed8;
+    }
 
     section.section {
       background: transparent !important;
@@ -315,9 +341,10 @@
       <li><a href="#abstract">Abstract</a></li>
       <li><a href="#datasets">Datasets Overview</a></li>
       <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#results">Experimental Results</a></li>
+      <li><a href="#ablations">Ablation Studies</a></li>
       <li><a href="#efficiency">Efficiency & Complexity</a></li>
       <li><a href="#conclusions">Conclusions</a></li>
-      <li><a href="#BibTeX">BibTeX</a></li>
     </ul>
   </nav>
 
@@ -505,7 +532,10 @@
                   <td style="padding: 12px; text-align: right;">11.4 hours</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #eee;">
-                  <td style="padding: 12px; color: #3273dc; font-weight: 500; text-align: left;">Visual-Coding</td>
+                  <!-- <td style="padding: 12px; color: #3273dc; font-weight: 500; text-align: left;">Visual-Coding</td> -->
+                   <td style="vertical-align: middle;">
+                      <a href="https://dandiarchive.org/dandiset/000021/0.251116.2246" target="_blank" rel="noopener noreferrer" class="dataset-link">Visual-Coding</a>
+                    </td>
                   <td style="padding: 12px; text-align: left;">Mouse</td>
                   <td style="padding: 12px; text-align: left;">VISp</td>
                   <td style="padding: 12px; text-align: left;">Drifting Gratings</td>
@@ -514,7 +544,9 @@
                   <td style="padding: 12px; text-align: right;">45.6 hours</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #eee;">
-                  <td style="padding: 12px; color: #3273dc; font-weight: 500; text-align: left;">PPC-FINGER</td>
+                  <td style="vertical-align: middle;">
+                      <a href="https://doi.org/10.48324/dandi.000147/0.221122.2256" target="_blank" rel="noopener noreferrer" class="dataset-link">PPC-FINGER</a>
+                    </td>
                   <td style="padding: 12px; text-align: left;">Human</td>
                   <td style="padding: 12px; text-align: left;">PPC</td>
                   <td style="padding: 12px; text-align: left;">Finger Press</td>
@@ -523,7 +555,10 @@
                   <td style="padding: 12px; text-align: right;">6.7 hours</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #eee;">
-                  <td style="padding: 12px; color: #3273dc; font-weight: 500; text-align: left;">Perich</td>
+                  
+                  <td style="vertical-align: middle;">
+                      <a href="https://doi.org/10.48324/dandi.000688/0.250122.1735" target="_blank" rel="noopener noreferrer" class="dataset-link">Perich</a>
+                    </td>
                   <td style="padding: 12px; text-align: left;">Macaque</td>
                   <td style="padding: 12px; text-align: left;">M1, PMd</td>
                   <td style="padding: 12px; text-align: left;">CO, RT</td>
@@ -532,7 +567,9 @@
                   <td style="padding: 12px; text-align: right;">2.5 hours</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #eee;">
-                  <td style="padding: 12px; color: #3273dc; font-weight: 500; text-align: left;">MC-Maze</td>
+                  <td style="vertical-align: middle;">
+                      <a href="https://doi.org/10.48324/dandi.000128/0.220113.0400" target="_blank" rel="noopener noreferrer" class="dataset-link">MC-Maze</a>
+                    </td>
                   <td style="padding: 12px; text-align: left;">Macaque</td>
                   <td style="padding: 12px; text-align: left;">M1, PMd</td>
                   <td style="padding: 12px; text-align: left;">Maze</td>
@@ -541,7 +578,9 @@
                   <td style="padding: 12px; text-align: right;">1.9 hours</td>
                 </tr>
                 <tr style="border-bottom: 1px solid #e0e0e0;">
-                  <td style="padding: 12px; color: #3273dc; font-weight: 500; text-align: left;">Area2-Bump</td>
+                  <td style="vertical-align: middle;">
+                      <a href="https://doi.org/10.48324/dandi.000127/0.220113.0359" target="_blank" rel="noopener noreferrer" class="dataset-link">Area2-Bump</a>
+                    </td>
                   <td style="padding: 12px; text-align: left;">Macaque</td>
                   <td style="padding: 12px; text-align: left;">S1</td>
                   <td style="padding: 12px; text-align: left;">Bump</td>
@@ -669,6 +708,274 @@
   </div>
 </section>
 
+<!-- Experimental Results Section -->
+<section class="section" id="results">
+  <div class="container is-max-widescreen">
+    <h2 class="title is-3 has-text-centered">Experimental Results</h2>
+    
+    <p class="content is-size-6 has-text-justified mb-4">
+      We compare UniBCI with baseline methods across classification and regression tasks. Baselines trained from scratch include Wiener filters (WF), GRU, MLP, and NoMAD. Pretrained baselines include VAE, NDT1, NDT2, MtM, POYO, and POYO+. All pretrained models are fine-tuned under a full-parameter setting (learning rate $1 \times 10^{-4}$, batch size 64) with 80% data for training and 20% for testing.
+    </p>
+
+    <!-- Main Performance Table -->
+    <div class="box mb-5">
+      <!-- <h3 class="title is-4 mb-3 has-text-centered">Main Performance Comparison</h3>
+      <p class="is-size-7 has-text-grey has-text-centered mb-3">
+        Values represent mean $\pm$ standard deviation. <strong>Bold</strong> and <u>underlined</u> values indicate the best and second-best performance, respectively.
+      </p> -->
+      
+      <div class="table-container">
+        <!-- 调整了字号为 0.75rem，并将内边距收紧 -->
+        <table class="table is-fullwidth" style="font-size: 0.75rem; text-align: center; vertical-align: middle; width: 100%;">
+          <caption style="caption-side: top; text-align: left; margin-bottom: 0.8rem; color: #1e293b; font-size: 0.9rem; line-height: 1.5;">
+            <strong>Table 1: Main performance comparison on classification and regression tasks.</strong> 
+            <span style="color: #64748b; font-size: 0.82rem; font-weight: normal; margin-left: 4px;">
+              Values represent mean $\pm$ standard deviation. <strong>Bold</strong> and <u>underlined</u> values indicate the best and second-best performance, respectively.
+            </span>
+          </caption>
+          <style>
+            /* 专门针对此表格精细化收紧边距 */
+            #results .table td, #results .table th {
+              padding: 5px 2px !important;
+              letter-spacing: -0.2px;
+            }
+          </style>
+          <thead>
+            <tr style="background-color: #f8fafc; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
+              <th rowspan="2" style="vertical-align: middle; text-align: left; padding-left: 6px !important;">Generalization</th>
+              <th rowspan="2" style="vertical-align: middle; text-align: left;">Dataset</th>
+              <th rowspan="2" style="vertical-align: middle;">Metrics</th>
+              <th colspan="4" style="border-bottom: 1px solid #cbd5e1;">From scratch</th>
+              <th colspan="7" style="border-bottom: 1px solid #cbd5e1;">Pretrained</th>
+            </tr>
+            <tr style="background-color: #f8fafc; border-bottom: 2px solid #cbd5e1;">
+              <th>WF</th>
+              <th>GRU</th>
+              <th>MLP</th>
+              <th>NoMAD</th>
+              <th>VAE</th>
+              <th>NDT1</th>
+              <th>NDT2</th>
+              <th>MtM</th>
+              <th>POYO</th>
+              <th>POYO+</th>
+              <th style="background-color: #eff6ff; color: #1d4ed8; font-weight: bold;">UniBCI (Ours)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Classification Header -->
+            <tr style="background-color: #f1f5f9; font-weight: bold;">
+              <td colspan="14" style="text-align: center; color: #334155; padding: 4px !important;">Classification Tasks</td>
+            </tr>
+
+            <!-- New Session -->
+            <tr>
+              <td rowspan="4" style="font-weight: 600; text-align: left; vertical-align: middle; padding-left: 6px !important;">New Session</td>
+              <td rowspan="2" style="text-align: left; vertical-align: middle;">M1-CO1 (Multi-day)</td>
+              <td>B-Acc</td>
+              <td>0.645±.008</td><td>0.806±.005</td><td>0.680±.006</td><td>0.848±.004</td><td>0.817±.005</td><td>0.885±.006</td><td>0.863±.003</td><td>0.854±.007</td><td>0.859±.003</td><td><u>0.892±.007</u></td>
+              <td style="background-color: #eff6ff; font-weight: bold; color: #1d4ed8;">0.900±.008</td>
+            </tr>
+            <tr>
+              <td>F1-W</td>
+              <td>0.649±.007</td><td>0.808±.005</td><td>0.680±.006</td><td>0.850±.004</td><td>0.820±.005</td><td>0.886±.006</td><td>0.866±.002</td><td>0.855±.006</td><td>0.858±.003</td><td><u>0.893±.006</u></td>
+              <td style="background-color: #eff6ff; font-weight: bold; color: #1d4ed8;">0.901±.008</td>
+            </tr>
+            <tr>
+              <td rowspan="2" style="text-align: left; vertical-align: middle;">M1-CO1 (Cross-day)</td>
+              <td>B-Acc</td>
+              <td>0.623±.012</td><td>0.739±.010</td><td>0.666±.008</td><td>0.821±.006</td><td>0.758±.009</td><td>0.830±.019</td><td>0.828±.013</td><td>0.843±.001</td><td><strong>0.870±.007</strong></td><td><u>0.860±.016</u></td>
+              <td style="background-color: #eff6ff; font-weight: 500;">0.855±.014</td>
+            </tr>
+            <tr>
+              <td>F1-W</td>
+              <td>0.624±.012</td><td>0.741±.009</td><td>0.660±.008</td><td>0.822±.006</td><td>0.756±.009</td><td>0.828±.019</td><td>0.828±.013</td><td>0.845±.012</td><td><strong>0.870±.007</strong></td><td><u>0.859±.016</u></td>
+              <td style="background-color: #eff6ff; font-weight: 500;">0.855±.014</td>
+            </tr>
+
+            <!-- New Subject -->
+            <tr style="border-top: 1px solid #e2e8f0;">
+              <td rowspan="2" style="font-weight: 600; text-align: left; vertical-align: middle; padding-left: 6px !important;">New Subject</td>
+              <td rowspan="2" style="text-align: left; vertical-align: middle;">LICK</td>
+              <td>B-Acc</td>
+              <td>0.655±.005</td><td>0.705±.004</td><td>0.662±.003</td><td>0.724±.003</td><td>0.685±.004</td><td>0.739±.001</td><td>0.745±.001</td><td>0.741±.002</td><td>0.729±.007</td><td><strong>0.777±.002</strong></td>
+              <td style="background-color: #eff6ff; font-weight: 600; text-decoration: underline;">0.759±.003</td>
+            </tr>
+            <tr>
+              <td>F1-W</td>
+              <td>0.792±.004</td><td>0.781±.003</td><td>0.851±.002</td><td>0.855±.002</td><td>0.843±.002</td><td><u>0.865±.000</u></td><td>0.865±.001</td><td>0.865±.001</td><td>0.854±.001</td><td><strong>0.866±.000</strong></td>
+              <td style="background-color: #eff6ff; font-weight: 500;">0.859±.002</td>
+            </tr>
+
+            <!-- New Specie -->
+            <tr style="border-top: 1px solid #e2e8f0;">
+              <td rowspan="2" style="font-weight: 600; text-align: left; vertical-align: middle; padding-left: 6px !important;">New Specie</td>
+              <td rowspan="2" style="text-align: left; vertical-align: middle;">PPC-FINGER</td>
+              <td>B-Acc</td>
+              <td>0.852±.006</td><td>0.894±.005</td><td>0.929±.004</td><td>0.717±.006</td><td>0.881±.005</td><td>0.962±.004</td><td><u>0.965±.001</u></td><td>0.950±.003</td><td>0.835±.007</td><td>0.870±.007</td>
+              <td style="background-color: #eff6ff; font-weight: bold; color: #1d4ed8;">0.968±.003</td>
+            </tr>
+            <tr>
+              <td>F1-W</td>
+              <td>0.824±.006</td><td>0.894±.005</td><td>0.927±.004</td><td>0.719±.006</td><td>0.884±.005</td><td>0.960±.003</td><td><u>0.963±.002</u></td><td>0.951±.003</td><td>0.832±.008</td><td>0.870±.006</td>
+              <td style="background-color: #eff6ff; font-weight: bold; color: #1d4ed8;">0.967±.003</td>
+            </tr>
+
+            <!-- New Task -->
+            <tr style="border-top: 1px solid #e2e8f0;">
+              <td rowspan="2" style="font-weight: 600; text-align: left; vertical-align: middle; padding-left: 6px !important;">New Task</td>
+              <td rowspan="2" style="text-align: left; vertical-align: middle;">Visual-Coding</td>
+              <td>B-Acc</td>
+              <td>0.737±.004</td><td>0.686±.006</td><td>0.754±.007</td><td>0.734±.005</td><td>0.698±.004</td><td>0.750±.004</td><td>0.759±.002</td><td><u>0.773±.005</u></td><td>0.680±.004</td><td>0.702±.008</td>
+              <td style="background-color: #eff6ff; font-weight: bold; color: #1d4ed8;">0.782±.004</td>
+            </tr>
+            <tr>
+              <td>F1-W</td>
+              <td>0.729±.003</td><td>0.677±.005</td><td>0.751±.007</td><td>0.728±.005</td><td>0.670±.003</td><td>0.747±.004</td><td>0.757±.001</td><td><u>0.773±.005</u></td><td>0.678±.005</td><td>0.702±.007</td>
+              <td style="background-color: #eff6ff; font-weight: bold; color: #1d4ed8;">0.784±.004</td>
+            </tr>
+
+            <!-- Avg Classification -->
+            <tr style="border-top: 2px solid #cbd5e1; font-weight: bold; background-color: #f8fafc;">
+              <td colspan="3" style="text-align: right; padding-right: 8px !important;">Avg. B-Acc</td>
+              <td>0.702</td><td>0.766</td><td>0.738</td><td>0.769</td><td>0.768</td><td><u>0.833</u></td><td>0.832</td><td>0.832</td><td>0.795</td><td>0.821</td>
+              <td style="background-color: #dbeafe; color: #1d4ed8;">0.853</td>
+            </tr>
+
+            <!-- Regression Header -->
+            <tr style="background-color: #f1f5f9; font-weight: bold;">
+              <td colspan="14" style="text-align: center; color: #334155; padding: 4px !important;">Regression Tasks</td>
+            </tr>
+
+            <!-- New Subject Reg -->
+            <tr>
+              <td style="font-weight: 600; text-align: left; padding-left: 6px !important;">New Subject</td>
+              <td style="text-align: left;">Perich T-CO</td>
+              <td>$R^2$</td>
+              <td>0.580±.008</td><td>0.625±.006</td><td>0.682±.005</td><td>0.656±.006</td><td>0.716±.004</td><td>0.747±.002</td><td>0.706±.004</td><td><u>0.769±.002</u></td><td>0.756±.005</td><td>0.731±.007</td>
+              <td style="background-color: #eff6ff; font-weight: bold; color: #1d4ed8;">0.770±.004</td>
+            </tr>
+
+            <!-- New Task Reg -->
+            <tr style="border-top: 1px solid #e2e8f0;">
+              <td rowspan="2" style="font-weight: 600; text-align: left; vertical-align: middle; padding-left: 6px !important;">New Task</td>
+              <td style="text-align: left;">Perich T-RT</td>
+              <td>$R^2$</td>
+              <td>0.559±.009</td><td>0.621±.007</td><td>0.613±.007</td><td>0.605±.008</td><td>0.629±.007</td><td>0.681±.003</td><td>0.633±.002</td><td>0.673±.002</td><td><strong>0.693±.003</strong></td><td>0.684±.006</td>
+              <td style="background-color: #eff6ff; font-weight: 600; text-decoration: underline;">0.693±.004</td>
+            </tr>
+            <tr>
+              <td style="text-align: left;">MC-Maze</td>
+              <td>$R^2$</td>
+              <td>0.728±.006</td><td>0.773±.005</td><td>0.804±.004</td><td>0.795±.004</td><td>0.797±.004</td><td><u>0.884±.002</u></td><td>0.877±.001</td><td>0.868±.004</td><td>0.880±.005</td><td>0.879±.004</td>
+              <td style="background-color: #eff6ff; font-weight: bold; color: #1d4ed8;">0.886±.003</td>
+            </tr>
+
+            <!-- New Region Reg -->
+            <tr style="border-top: 1px solid #e2e8f0;">
+              <td style="font-weight: 600; text-align: left; padding-left: 6px !important;">New Region</td>
+              <td style="text-align: left;">Area2-Bump</td>
+              <td>$R^2$</td>
+              <td>0.724±.006</td><td>0.814±.004</td><td>0.778±.005</td><td>0.793±.004</td><td>0.797±.004</td><td><strong>0.891±.003</strong></td><td>0.878±.003</td><td>0.855±.007</td><td>0.862±.004</td><td>0.875±.003</td>
+              <td style="background-color: #eff6ff; font-weight: 600; text-decoration: underline;">0.888±.002</td>
+            </tr>
+
+            <!-- Avg Regression -->
+            <tr style="border-top: 2px solid #cbd5e1; font-weight: bold; background-color: #f8fafc;">
+              <td colspan="3" style="text-align: right; padding-right: 8px !important;">Avg. $R^2$</td>
+              <td>0.648</td><td>0.708</td><td>0.719</td><td>0.712</td><td>0.735</td><td><u>0.801</u></td><td>0.774</td><td>0.791</td><td>0.798</td><td>0.792</td>
+              <td style="background-color: #dbeafe; color: #1d4ed8;">0.809</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="content is-size-6 has-text-justified">
+      UniBCI consistently improves performance across all evaluation scenarios, demonstrating strong generalization of its pretrained neural representations with effective transfer to new species, subjects, brain regions, and tasks. These gains are achieved with limited labeled data for fine-tuning, indicating that UniBCI’s context-aware embeddings and spatiotemporal hierarchical attention capture multi-scale neural dynamics and enhance robustness to domain shifts.
+    </p>
+  </div>
+</section>
+
+<!-- Ablation Studies Section -->
+<section class="section" id="ablations">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Ablation Studies</h2>
+
+    <!-- 1. Pretraining Corpus Ablation -->
+    <div class="box mb-6">
+      <h3 class="title is-4 mb-3">1. Effectiveness of Pretraining Corpus</h3>
+      <p class="content is-size-6 has-text-justified">
+        We evaluate how pretraining strategies and data diversity affect UniBCI's generalization across four settings:
+        <strong>(1) From scratch</strong>, <strong>(2) Pretraining on M1-CO1 only</strong>, <strong>(3) Multi-task macaque pretraining</strong>, and <strong>(4) Full cross-species pretraining</strong>.
+      </p>
+
+      <div class="columns is-vcentered">
+        <!-- 图 4：调大为 is-7 (原本是 is-6) -->
+        <div class="column is-8">
+          <figure class="image">
+            <img src="static/images/classification_tasks_clean.svg" alt="Classification Ablation Study" style="width: 100%;">
+            <figcaption class="has-text-centered is-size-7 mt-2">
+              <strong>Figure 3:</strong> Ablation study of pretraining strategies across classification datasets.
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- 图 5：调小为 is-5 (原本是 is-6) -->
+        <div class="column is-4">
+          <figure class="image">
+            <img src="static/images/regression_grouped_bars.svg" alt="Regression Ablation Study" style="width: 100%;">
+            <figcaption class="has-text-centered is-size-7 mt-2">
+              <strong>Figure 4:</strong> Performance evaluation ($R^2$ metrics) on regression tasks under pretraining configurations.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="content is-size-6 has-text-justified mt-3">
+        <ul>
+          <li><strong>From-scratch baseline (1):</strong> Suffers substantial performance degradation, indicating that metadata embeddings remain poorly aligned without self-supervised pretraining.</li>
+          <li><strong>Single-task pretraining (2):</strong> Improves macaque motor tasks but fails to generalize to unseen domains (human PPC-FINGER) or sensory tasks (Visual-Coding).</li>
+          <li><strong>Macaque corpus expansion (3):</strong> Broadens functional coverage, uniformly boosting downstream tasks.</li>
+          <li><strong>Cross-species corpus (4):</strong> Further enriches the text-conditioned space, disentangling species-specific semantics from shared neural dynamics.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 2. Structural Ablation Study -->
+    <div class="box">
+      <h3 class="title is-4 mb-3">2. Structural Module Ablation</h3>
+      <p class="content is-size-6 has-text-justified">
+        We evaluate the contributions of individual model components across benchmarks.
+      </p>
+
+      <div class="columns is-vcentered">
+        <!-- Figure 6 Structural Ablation -->
+        <div class="column is-7">
+          <figure class="image">
+            <img src="static/images/ablating_new.svg" alt="Structural Module Ablation Results" style="width: 100%;">
+            <figcaption class="has-text-centered is-size-7 mt-2">
+              <strong>Figure 5:</strong> Experimental results of ablating modules. Red numbers show inference latency for Variants (5) & (6).
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- Text Summary for Structural Ablation -->
+        <div class="column is-5">
+          <ul class="content is-size-6">
+            <li><strong>(1) w/o Metadata:</strong> Performance drops across all datasets (e.g., -2.8% B-Acc on M1-CO1 Multi-day), proving contextual metadata helps mitigate domain shifts.</li>
+            <li><strong>(2) w/o Positional Encoding:</strong> Results drop by 4.2% and 6.5% on MC-Maze and Area2-Bump, emphasizing spatial/temporal order.</li>
+            <li><strong>(3) w/o ILA:</strong> Causes an 8.6% drop on M1-CO1 (Multi-day), showing its key role in capturing temporal patterns.</li>
+            <li><strong>(4) w/o ASWA:</strong> Consistent performance decline, highlighting global spatial dependency modeling.</li>
+            <li><strong>(5) Replacing ILA with Full Attention:</strong> Increases latency and drops performance, proving ILA offers superior inductive bias and efficiency.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
 <!-- Efficiency and Complexity Section -->
 <section class="section" id="efficiency">
@@ -733,7 +1040,7 @@
           <figure class="image">
             <img src="static/images/UniBCI_SOTA_Analysis_newV.svg" alt="Figure 3: Comparison of model efficiency in terms of parameter count, inference latency and balanced performance.">
             <figcaption class="has-text-centered is-size-7 mt-2">
-              <strong>Figure 3:</strong> Comparison of model efficiency in terms of parameter count, inference latency, and decoding performance. The x-axis is in log scale, and circle size represents parameter scale.
+              <strong>Figure 6:</strong> Comparison of model efficiency in terms of parameter count, inference latency, and decoding performance. The x-axis is in log scale, and circle size represents parameter scale.
             </figcaption>
           </figure>
         </div>
@@ -761,43 +1068,68 @@
                   <th style="padding: 12px; font-weight: 700; color: #222; text-align: left;">Model</th>
                   <th style="padding: 12px; font-weight: 700; color: #222; text-align: center;">Lightweight</th>
                   <th style="padding: 12px; font-weight: 700; color: #222; text-align: center;">Low-latency</th>
-                  <th style="padding: 12px; font-weight: 700; color: #222; text-align: center;">Label-free</th>
-                  <th style="padding: 12px; font-weight: 700; color: #222; text-align: center;">Text-conditioned</th>
+                  <th style="padding: 12px; font-weight: 700; color: #222; text-align: center;">Behavior-free</th>
+                  <th style="padding: 12px; font-weight: 700; color: #222; text-align: center;">Metadata-conditioned</th>
                   <th style="padding: 12px; font-weight: 700; color: #222; text-align: center;">Cross-species</th>
                 </tr>
               </thead>
               <tbody>
+                <!-- NDT1 -->
                 <tr style="border-bottom: 1px solid #eee;">
-                  <td style="padding: 12px; font-weight: 600; color: #555; text-align: left;">NDT1</td>
-                  <td style="padding: 12px; text-align: center; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
-                  <td style="padding: 12px; text-align: center; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
-                  <td style="padding: 12px; text-align: center; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
-                  <td style="padding: 12px; text-align: center; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
-                  <td style="padding: 12px; text-align: center; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px 16px; vertical-align: middle; text-align: left;">
+                    <a href="https://github.com/snel-repo/neural-data-transformers" target="_blank" rel="noopener noreferrer" class="model-link">NDT1</a>
+                  </td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
                 </tr>
+
+                <!-- NDT2 -->
                 <tr style="border-bottom: 1px solid #eee;">
-                  <td style="padding: 12px; font-weight: 600; color: #555; text-align: left;">NDT2</td>
-                  <td style="padding: 12px; text-align: center; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
-                  <td style="padding: 12px; text-align: center; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
-                  <td style="padding: 12px; text-align: center; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
-                  <td style="padding: 12px; text-align: center; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
-                  <td style="padding: 12px; text-align: center; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px 16px; vertical-align: middle; text-align: left;">
+                    <a href="https://github.com/joel99/context_general_bci" target="_blank" rel="noopener noreferrer" class="model-link">NDT2</a>
+                  </td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
                 </tr>
+
+                <!-- POYO -->
                 <tr style="border-bottom: 1px solid #eee;">
-                  <td style="padding: 12px; font-weight: 600; color: #555; text-align: left;">POYO</td>
-                  <td style="padding: 12px; text-align: center; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
-                  <td style="padding: 12px; text-align: center; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
-                  <td style="padding: 12px; text-align: center; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
-                  <td style="padding: 12px; text-align: center; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
-                  <td style="padding: 12px; text-align: center; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px 16px; vertical-align: middle; text-align: left;">
+                    <a href="https://poyo-brain.github.io/" target="_blank" rel="noopener noreferrer" class="model-link">POYO</a>
+                  </td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
                 </tr>
+
+                <!-- POYO+ -->
+                <tr style="border-bottom: 1px solid #eee;">
+                  <td style="padding: 12px 16px; vertical-align: middle; text-align: left;">
+                    <a href="https://poyo-plus.github.io/" target="_blank" rel="noopener noreferrer" class="model-link">POYO+</a>
+                  </td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #e53935; font-weight: bold; font-size: 1.1rem;">✕</td>
+                </tr>
+
+                <!-- UniBCI (Ours) -->
                 <tr style="border-bottom: 1px solid #e0e0e0; background-color: #fafafa;">
-                  <td style="padding: 12px; font-weight: 700; color: #3273dc; text-align: left;">UniBCI</td>
-                  <td style="padding: 12px; text-align: center; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
-                  <td style="padding: 12px; text-align: center; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
-                  <td style="padding: 12px; text-align: center; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
-                  <td style="padding: 12px; text-align: center; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
-                  <td style="padding: 12px; text-align: center; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
+                  <td style="padding: 12px 16px; vertical-align: middle; font-weight: 700; color: #3273dc; text-align: left;">UniBCI (Ours)</td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
+                  <td style="padding: 12px; text-align: center; vertical-align: middle; color: #43a047; font-weight: bold; font-size: 1.1rem;">✓</td>
                 </tr>
               </tbody>
             </table>
